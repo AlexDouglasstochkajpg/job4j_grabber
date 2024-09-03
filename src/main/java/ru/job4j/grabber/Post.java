@@ -9,7 +9,6 @@ public class Post {
     private String link;
     private String description;
     private LocalDateTime created;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -19,7 +18,7 @@ public class Post {
             return false;
         }
         Post post = (Post) o;
-        return id == post.id && Objects.equals(link, post.link);
+        return this.id == post.id && this.link.equals(post.link);
     }
 
     @Override
@@ -32,9 +31,9 @@ public class Post {
         return "Post{"
                 + "id=" + id
                 + ", title='" + title + '\''
-                + ", link='" + link + '\'' +
-                ", description='" + description + '\''
+                + ", link='" + link + '\''
+                + ", description='" + description + '\''
                 + ", created=" + created
-                + '}';
+                + "}";
     }
 }
