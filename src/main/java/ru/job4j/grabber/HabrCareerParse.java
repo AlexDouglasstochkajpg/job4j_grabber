@@ -58,4 +58,5 @@ public class HabrCareerParse implements Parse {
         });
         return rsl;
     }
+
 }

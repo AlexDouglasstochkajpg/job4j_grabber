@@ -59,18 +59,17 @@ public class Grabber implements Grab {
         }
     }
 
-
     public static void main(String[] args) throws Exception {
         var config = new Properties();
         try (InputStream input = Grabber.class.getClassLoader()
-                .getResourceAsStream("app.properties")) {
+                .getResourceAsStream("rabbit.properties")) {
             config.load(input);
         }
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
         scheduler.start();
         var parse = new HabrCareerParse(new HabrCareerDateTimeParser());
         var store = new PsqlStore(config);
-        var time = Integer.parseInt(config.getProperty("time"));
+        var time = Integer.parseInt(config.getProperty("rabbit.interval"));
         new Grabber(parse, store, scheduler, time).init();
     }
 }
